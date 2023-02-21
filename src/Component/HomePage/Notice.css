@@ -1,0 +1,56 @@
+.card{
+    display: flex;
+    margin: 1rem;
+    border: black 1px solid;
+    border-radius: 10px;
+    /* background-color: #1db95430; */
+}
+
+.content{
+    width: 70%;
+    margin: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.description{
+    display: flex;
+    height: 90%;
+}
+
+.details{
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+.date{
+    border-top: black 2px solid;
+    padding: 0.5rem;
+    font-size: large;
+}
+
+.eventName{
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 27.5px;
+}
+
+.eventDes{
+    padding-bottom: 0.5rem;
+    font-size: large;
+}
+
+.image {
+    height: 12vh;
+    padding-bottom: 0.5rem;
+}
+
+.poster{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.posterImage{
+    height: 40vh;
+}
