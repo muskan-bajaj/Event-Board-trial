@@ -1,4 +1,4 @@
-const noticeSchema = require("./table");
+const noticeSchema = require("../Models/noticeModel");
 const mongoose = require("mongoose");
 
 const getNotices = async (req, res) => {
@@ -19,9 +19,14 @@ const getNotice = async (req, res) => {
 };
 
 const postNotice = async (req, res) => {
-  const { eventName, eventDes, date } = req.body;
+  const { eventName, eventDes, date, poster } = req.body;
   try {
-    const notice = await noticeSchema.create({ eventName, eventDes, date });
+    const notice = await noticeSchema.create({
+      eventName,
+      eventDes,
+      date,
+      poster,
+    });
     res.status(200).json(notice);
   } catch (error) {
     res.status(400).json({ error: error.message });

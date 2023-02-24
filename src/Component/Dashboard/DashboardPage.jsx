@@ -4,6 +4,7 @@ import './DashboardPage.css'
 
 // import { noticeDetails } from "../../Data/noticeDetails"
 import Card from '../NoticeCard/Card';
+import Form from '../Form/Form';
 
 export default function DashboardPage() {
   const [notice, setNotice]=useState(null);
@@ -43,7 +44,10 @@ export default function DashboardPage() {
               );
             })} */}
           </div>
-          <div className="form">
+            <Form/>
+          <div>
+          </div>
+          {/* <div className="form">
             <div className="formHeading">
               Create new event
             </div>
@@ -59,7 +63,7 @@ export default function DashboardPage() {
               <span className='inputHeading'>Event Date:</span>
               <input type="text" placeholder='Event date' />
             </div>
-          </div>
+          </div> */}
       </div>
     </div>
   )

@@ -1,7 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const creatingRoutes = require("./creatingRoutes");
+const noticeRoute = require("./Routes/noticeRoutes");
+const userRoute = require("./Routes/userRoutes");
 const mongoose = require("mongoose");
 
 mongoose
@@ -17,4 +18,5 @@ mongoose
 
 app.use(express.json());
 
-app.use("/api/notices", creatingRoutes);
+app.use("/api/notices", noticeRoute);
+app.use("/api/user", userRoute);
