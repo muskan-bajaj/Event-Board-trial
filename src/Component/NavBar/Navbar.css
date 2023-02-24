@@ -22,7 +22,7 @@ body{
     align-items: center;
 }
 
-input{
+.searchInput{
     height: 5vh;
     width: 50vw;
     padding: 20px;
@@ -31,17 +31,17 @@ input{
     border: 1px solid rgba(128, 128, 128, 0.767);
 }
 
-input::placeholder{
+.searchInput input::placeholder{
     text-align: center;
     color: rgba(128, 128, 128, 0.767);
     padding: 10px;
 }
 
-input:focus{
+.searchInput input:focus{
     outline: none;
 }
 
-button{
+.loginB{
     height: 5vh;
     width: 10vw;
     margin-right: 20px;

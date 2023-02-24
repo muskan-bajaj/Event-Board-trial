@@ -43,7 +43,7 @@
 
 #email,#password{
     width: 25vw;
-    height: 1px;
+    height: 40px;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
@@ -64,5 +64,6 @@
 }
 
 .signInButton{
-    width: 28vw;
+    width: 25vw;
+    height: 30px;
 }

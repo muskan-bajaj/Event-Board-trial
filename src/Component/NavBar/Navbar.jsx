@@ -9,11 +9,11 @@ export default function Navbar() {
             <img className='navLogo' alt='' src='https://staging.noticebard.com/wp-content/uploads/2022/08/Kiit-logo-696x340-300x147-1.jpg'></img>
         </div>
         <div className='search'>
-            <input type='search' placeholder='Type to search here!'/>
+            <input type='search' className='searchInput' placeholder='Type to search here!'/>
         </div>
         <div className='login'>
             <Link to='/login' style={{textDecoration:'none'}}>
-              <button>Login</button>
+              <button className='loginB'>Login</button>
             </Link>
         </div>
     </div>

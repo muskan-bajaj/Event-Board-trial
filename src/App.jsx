@@ -4,6 +4,7 @@ import Navbar from "./Component/NavBar/Navbar";
 import Home from "./Page/Home";
 import Login from "./Page/Login";
 import ForgetPassword from "./Page/ForgetPassword"
+import Dashboard from "./Page/Dashboard";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/home" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/forgetPassword" element={<ForgetPassword/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>
