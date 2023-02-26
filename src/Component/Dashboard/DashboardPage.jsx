@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState,useEffect } from 'react';
+import React,{ useState,useEffect } from 'react';
 import './DashboardPage.css'
 
 // import { noticeDetails } from "../../Data/noticeDetails"
@@ -26,7 +25,7 @@ export default function DashboardPage() {
         <div className="dashboard">
           <div className="notices">
             <div className="heading">
-              <h1>Hello David</h1>
+              <h1>Welcome!</h1>
               {/* <h3>Welcome Back!</h3> */}
             </div>
             {notice && notice.map((data)=>{

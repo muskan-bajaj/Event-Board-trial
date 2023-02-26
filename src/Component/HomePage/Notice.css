@@ -1,9 +1,23 @@
+.background{
+    background-color: #1DB954;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1px;
+  height: 100%;
+}
+
 .card{
     display: flex;
     margin: 1rem;
     border: black 1px solid;
     border-radius: 10px;
-    /* background-color: #1db95430; */
+}
+
+.cardElementHome .card{
+    margin-top: 1rem;    
+    background-color: black;
+    color: white;
 }
 
 .content{
@@ -25,6 +39,10 @@
     border-top: black 2px solid;
     padding: 0.5rem;
     font-size: large;
+}
+
+.cardElementHome .date{
+    border-top: white 2px solid;
 }
 
 .eventName{
