@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './LoginPage.css'
 
 export default function LoginPage() {
+
   return (
     <div className='bkgrd'>
       <div className="kiitLogo">
@@ -32,7 +33,9 @@ export default function LoginPage() {
               </Link>
             </div>
             <div className="signIn">
-              <button className='signInButton'>Sign In</button>
+              <Link to='/dashboard'>
+                <button className='signInButton'>Sign In</button>
+              </Link>
             </div>
           </div>
         </div>

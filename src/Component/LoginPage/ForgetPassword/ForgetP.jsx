@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './ForgetP.css'
 
 export default function LoginPage() {
@@ -32,7 +33,9 @@ export default function LoginPage() {
               </label>
             </div>
             <div className="signIn">
-              <button className='signInButton'>Sign In</button>
+              <Link to='/dashboard'>
+                <button className='signInButton'>Sign In</button>
+              </Link>
             </div>
           </div>
         </div>
