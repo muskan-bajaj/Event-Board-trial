@@ -1,18 +1,22 @@
-import React,{ useState,useEffect } from 'react';
+import React,{ useEffect } from 'react';
+import {useNoticeContext} from '../Hooks/useNoticeContext'
 import './DashboardPage.css'
 
 import Card from '../NoticeCard/Card';
 import Form from '../Form/Form';
 
 export default function DashboardPage() {
-  const [notice, setNotice]=useState(null);
+  //const [notice, setNotice]=useState(null);
+  const {notice,dispatch}=useNoticeContext();
 
   useEffect(()=>{
     const fetchNotice =async()=>{
         const noticeF=await fetch("/api/notices");
         const noticeJson=await noticeF.json();
+
         if(noticeF.ok){
-          setNotice(noticeJson)
+          dispatch({type: 'SHOW_ALL_NOTICE', payload: noticeJson})
+          //setNotice(noticeJson)
         }
     }
     fetchNotice();
