@@ -8,9 +8,8 @@ const createToken = (_id) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // console.log(userSchema);
     const user = await userSchema.loginUser(email, password);
-    const token = createToken(user._id);
+    const jwtToken = createToken(user._id);
     res.status(400).json({ email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -24,7 +23,10 @@ const signup = async (req, res) => {
       email,
       password,
     });
-    res.status(200).json(user);
+
+    const jwtToken = createToken(user._id);
+
+    res.status(200).json({ email, jwtToken });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
