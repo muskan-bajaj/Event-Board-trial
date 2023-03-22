@@ -10,7 +10,7 @@ const login = async (req, res) => {
   try {
     const user = await userSchema.loginUser(email, password);
     const jwtToken = createToken(user._id);
-    res.status(400).json({ email, token });
+    res.status(400).json({ email, jwtToken });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -19,10 +19,7 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await userSchema.create({
-      email,
-      password,
-    });
+    const user = await userSchema.signUpUser(email, password);
 
     const jwtToken = createToken(user._id);
 

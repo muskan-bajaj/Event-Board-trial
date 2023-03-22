@@ -27,21 +27,22 @@ userSchema.statics.signUpUser = async function (email, password) {
 
 userSchema.statics.loginUser = async function (email, password) {
   if (!email || !password) {
-    throw Error("Enter login credentials");
+    throw Error("Please fill all the fields");
   }
-  const user = await this.findOne({ email });
-  if (!user) {
+  const existingUser = await this.findOne({ email });
+  if (!existingUser) {
     throw Error("Invalid login credentials");
   }
-  //   console.log(user.password);
+  const passwordVerification = await bcrypt.compare(
+    password,
+    existingUser.password
+  );
 
-  //   if (!user.password) {
-  //     throw Error("Invalid login credentials");
-  //   }
-  if (!(password === user.password)) {
+  if (!passwordVerification) {
     throw Error("Invalid login credentials");
   }
 
-  return user;
+  return existingUser;
 };
+
 module.exports = mongoose.model("authentication", userSchema);
