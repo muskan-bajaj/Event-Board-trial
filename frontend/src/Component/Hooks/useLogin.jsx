@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {useAuthContext} from './useAuthContext'
 
 
-export default function useLogin() {
+export function useLogin() {
     const [error,setError]=useState(null)
     const [loading, setLoading]=useState(null)
 
@@ -28,7 +28,7 @@ export default function useLogin() {
         }
         if(response.ok){
             //creating cookie (local storage to keep the user logged in untill session is valid)
-            localStorage.setItem('user',JSON.stringify(json))
+            // localStorage.setItem('user',JSON.stringify(json))
             dispatch({type:'LOGIN',payload:json})
             setLoading(false)
         }
