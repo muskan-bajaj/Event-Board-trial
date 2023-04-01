@@ -10,7 +10,7 @@ export const useLogin=()=>{
         setIsLoading(true)
         setError(null)
         
-        const response=await fetch('api/user/login',{
+        const response=await fetch('/api/user/login',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({email,password})
@@ -21,9 +21,11 @@ export const useLogin=()=>{
         if(!response.ok){
             setIsLoading(false)
             setError(json.error)
+            console.log(json)
         }
 
         if(response.ok){
+            // console.log(json)
             //local storage for remaining logged in
             localStorage.setItem('user',JSON.stringify(json))
             dispatch({type:'LOGIN',payload:json})

@@ -73,3 +73,16 @@
     border: none;
     border-radius: 10px;
 }
+
+.loginError{
+    margin-top: -15px;
+    border: red 1px solid;
+    border-radius: 12px;
+    height: 40px;
+    width: 320px;
+    background-color: rgba(255, 0, 0, 0.316);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

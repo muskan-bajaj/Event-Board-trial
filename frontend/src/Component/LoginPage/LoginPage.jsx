@@ -44,10 +44,10 @@ export default function LoginPage() {
               </Link>
             </div>
             <div className="signIn">
-              <Link to='/dashboard'>
+              {/* <Link to='/dashboard'> */}
+                {error && <div className="loginError">{error}</div>}
                 <button className='signInButton' onClick={handleSubmit} disabled={isLoading}>Log In</button>
-                {error}
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </div>
