@@ -1,18 +1,13 @@
 import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
-import {useLogin} from '../Hooks/useLogin'
 import './LoginPage.css'
 
 export default function LoginPage() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
 
-  const {login,error,loading}=useLogin();
-
   const handleSubmit=async (e)=>{
     e.preventDefault();
-
-    await login(email,password)
   }
 
   return (
@@ -45,9 +40,8 @@ export default function LoginPage() {
             </div>
             <div className="signIn">
               <Link to='/dashboard'>
-                <button className='signInButton' onClick={handleSubmit} disabled={loading}>Log In</button>
+                <button className='signInButton' onClick={handleSubmit}>Log In</button>
               </Link>
-              {error}
             </div>
           </div>
         </div>
