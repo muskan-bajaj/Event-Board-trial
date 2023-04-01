@@ -1,12 +1,23 @@
-import { AuthContext } from "../Context/AuthContext";
+// import { AuthContext ,  NoticeContext } from "../Context/AuthContext";
+import { AuthContext } from "../Context/NoticeContext";
 import { useContext } from "react";
 
 export const useAuthContext=()=>{
-    const contextValue=useContext(AuthContext);
+    const authContextValue=useContext(AuthContext);
 
-    if(!contextValue){
+    if(!authContextValue){
         throw Error('useContext should be used inside contextProvider')
     }
 
-    return contextValue
+    return authContextValue
 }
+
+// export const useNoticeContext=()=>{
+//     const noticeContextValue=useContext(NoticeContext);
+
+//     if(!noticeContextValue){
+//         throw Error('useContext should be used inside contextProvider')
+//     }
+
+//     return noticeContextValue
+// }

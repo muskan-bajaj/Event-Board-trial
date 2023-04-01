@@ -1,5 +1,6 @@
 import React,{ useEffect } from 'react';
 import {useNoticeContext} from '../Hooks/useNoticeContext'
+// import {useNoticeContext} from '../Hooks/useAuthContext'
 import './DashboardPage.css'
 
 import Card from '../NoticeCard/Card';
