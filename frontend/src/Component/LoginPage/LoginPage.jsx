@@ -1,18 +1,45 @@
-import React,{ useState } from 'react'
+import React,{ useState,useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { useLogin } from '../Hooks/useLogin';
+import { AuthContext } from "../Context/Context";
+
 import './LoginPage.css'
 
 export default function LoginPage() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
-  const {login,isLoading,error}=useLogin();
+  const [error,setError]=useState(null);
 
+  const authContextValue=useContext(AuthContext);
+
+  const fetchFunction = async () => {
+    const response=await fetch('/api/user/login',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email,password})
+    });
+    const json=await response.json();
+
+    if(!response.ok){
+      authContextValue.email=email;
+      setError(json.error);
+      // console.log(json);
+      if(!json.error){
+        authContextValue.loggedIn=true;
+      }
+      authContextValue.login(json.email,json.jwtToken);
+    }
+
+    if(response.ok){
+      setError(error);
+    }
+  };
+
+  // if(authContextValue.loggedIn){
+  // }
 
   const handleSubmit=async (e)=>{
     e.preventDefault();
-
-    await login(email,password)
+    fetchFunction();
   }
 
   return (
@@ -44,10 +71,15 @@ export default function LoginPage() {
               </Link>
             </div>
             <div className="signIn">
-              {/* <Link to='/dashboard'> */}
-                {error && <div className="loginError">{error}</div>}
-                <button className='signInButton' onClick={handleSubmit} disabled={isLoading}>Log In</button>
-              {/* </Link> */}
+              ({authContextValue.loggedIn})
+                ?
+                <Link to='/dashboard'>
+                  {error && <div className="loginError">{error}</div>}
+                  <button className='signInButton' onClick={handleSubmit}>Log In</button>
+                </Link>
+                :
+                  {error && <div className="loginError">{error}</div>}
+                  <button className='signInButton' onClick={handleSubmit}>Log In</button>
             </div>
           </div>
         </div>
