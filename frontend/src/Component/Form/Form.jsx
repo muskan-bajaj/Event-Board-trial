@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNoticeContext } from '../Hooks/useNoticeContext'
-// import { useNoticeContext } from '../Hooks/useAuthContext'
+
 import "./Form.css"
 
 export default function Form() {
-    const {dispatch}=useNoticeContext()
     const [eventName,setName]=useState("")
     const [eventDes,setDes]=useState("")
     const [date,setDate]=useState("")
@@ -34,8 +32,6 @@ export default function Form() {
             setDate("")
             setPoster("")
             setError(null)
-            //console.log(json)
-            dispatch({type:'FETCH_ALL_NOTICE',payload:json})
         }
     }
 

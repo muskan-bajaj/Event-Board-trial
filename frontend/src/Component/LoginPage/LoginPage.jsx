@@ -1,5 +1,5 @@
 import React,{ useState,useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../Context/Context";
 
 import './LoginPage.css'
@@ -10,6 +10,8 @@ export default function LoginPage() {
   const [error,setError]=useState(null);
 
   const authContextValue=useContext(AuthContext);
+
+  const redirect=useNavigate();
 
   const fetchFunction = async () => {
     const response=await fetch('/api/user/login',{
@@ -22,24 +24,30 @@ export default function LoginPage() {
     if(!response.ok){
       authContextValue.email=email;
       setError(json.error);
-      // console.log(json);
       if(!json.error){
-        authContextValue.loggedIn=true;
+        authContextValue.setLoggedIn(true);
       }
+
+      if(json.error){
+        authContextValue.setLoggedIn(false);
+      }
+
       authContextValue.login(json.email,json.jwtToken);
     }
 
     if(response.ok){
       setError(error);
+      authContextValue.setLoggedIn(false);
     }
   };
-
-  // if(authContextValue.loggedIn){
-  // }
 
   const handleSubmit=async (e)=>{
     e.preventDefault();
     fetchFunction();
+
+    if(authContextValue.loggedIn){
+      redirect("/dashboard")
+    }
   }
 
   return (
@@ -71,15 +79,10 @@ export default function LoginPage() {
               </Link>
             </div>
             <div className="signIn">
-              ({authContextValue.loggedIn})
-                ?
-                <Link to='/dashboard'>
-                  {error && <div className="loginError">{error}</div>}
-                  <button className='signInButton' onClick={handleSubmit}>Log In</button>
-                </Link>
-                :
-                  {error && <div className="loginError">{error}</div>}
-                  <button className='signInButton' onClick={handleSubmit}>Log In</button>
+              {/* <Link to='/dashboard'> */}
+                {error && <div className="loginError">{error}</div>}
+                <button className='signInButton' onClick={handleSubmit}>Log In</button>
+              {/* </Link> */}
             </div>
           </div>
         </div>

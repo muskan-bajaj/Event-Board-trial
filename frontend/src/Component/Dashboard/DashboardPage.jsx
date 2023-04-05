@@ -1,14 +1,11 @@
-import React,{ useEffect } from 'react';
-import {useNoticeContext} from '../Hooks/useNoticeContext'
-// import {useNoticeContext} from '../Hooks/useAuthContext'
+import React,{ useState, useEffect } from 'react';
 import './DashboardPage.css'
 
 import Card from '../NoticeCard/Card';
 import Form from '../Form/Form';
 
 export default function DashboardPage() {
-  //const [notice, setNotice]=useState(null);
-  const {notice,dispatch}=useNoticeContext();
+  const [notice, setNotice]=useState(null);
 
   useEffect(()=>{
     const fetchNotice =async()=>{
@@ -16,12 +13,11 @@ export default function DashboardPage() {
         const noticeJson=await noticeF.json();
 
         if(noticeF.ok){
-          dispatch({type: 'SHOW_ALL_NOTICE', payload: noticeJson})
-          //setNotice(noticeJson)
+          setNotice(noticeJson)
         }
     }
     fetchNotice();
-  },[])
+  },[notice])
 
   return (
     <div>

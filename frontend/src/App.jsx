@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext }  from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Component/NavBar/Navbar";
 import Home from "./Page/Home";
@@ -6,8 +6,12 @@ import Login from "./Page/Login";
 import ForgetPassword from "./Page/ForgetPassword"
 import Dashboard from "./Page/Dashboard";
 
+import { AuthContext } from "./Component/Context/Context";
+
 
 function App() {
+  const authContextValue=useContext(AuthContext);
+
   return (
     <div>
       <BrowserRouter>
@@ -16,7 +20,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/forgetPassword" element={<ForgetPassword/>}/>
-            <Route path="/dashboard" element={<Dashboard/>}/>
+            {authContextValue.loggedIn && (<Route path="/dashboard" element={<Dashboard/>}/>)}
         </Routes>
       </BrowserRouter>
     </div>
