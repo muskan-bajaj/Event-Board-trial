@@ -1,10 +1,30 @@
 import React,{useContext} from 'react'
 import './Navbar.css'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from "../Context/Context";
 
 export default function Navbar() {
   const authContextValue=useContext(AuthContext);
+  const redirect=useNavigate();
+
+  const handleLogin=async()=>{
+    authContextValue.setOnLogin(true);
+  }
+
+  const handleHome=async()=>{
+    authContextValue.setOnLogin(false);
+  }
+
+  const handleLogout=async()=>{
+    authContextValue.setLoggedIn(false);
+    authContextValue.setOnLogin(false);
+    localStorage.removeItem('id')
+    localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    redirect('/')
+    // console.log("vinit chutiya")
+  }
+
   return (
     <div className='navbar'>
         <div className='image'>
@@ -14,17 +34,37 @@ export default function Navbar() {
             <input type='search' className='searchInput' placeholder='Type to search here!'/>
         </div>
         <div className='login'>
-            {/* <Link to='/login' style={{textDecoration:'none'}}>
-              <button className='loginB'>Login</button>
-            </Link> */}
+          {!authContextValue.loggedIn
+            ? 
+            <>
+              {!authContextValue.onLogin
+                ?
+                <Link to='/login' style={{textDecoration:'none'}}>
+                  <button className='loginB' onClick={handleLogin}>Login</button>
+                </Link>
+                :
+                <Link to='/' style={{textDecoration:'none'}}>
+                  <button className='loginB' onClick={handleHome}>Home</button>
+                </Link>
+              }
+            </>
+            : 
+            <button className='loginB' onClick={handleLogout}>Logout</button>
+          }
 
-            {!authContextValue.loggedIn ? (
-            <Link to='/login' style={{textDecoration:'none'}}>
+
+
+
+
+
+
+          {/* {!authContextValue.loggedIn ? (
+            <Link to='/login' style={{textDecoration:'none'}} onClick={handleLogin}>
               <button className='loginB'>Login</button>
             </Link>
           ) : (
-              <button className='loginB' onClick={console.log("qwer56789op;lojhgfdxzxcfhjkl;'")}>Logout</button>
-          )}
+              <button className='loginB' onClick={handleLogout}>Logout</button>
+          )} */}
         </div>
     </div>
   )

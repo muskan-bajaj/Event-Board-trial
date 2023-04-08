@@ -28,15 +28,17 @@ export default function LoginPage() {
       if(!json.error){
         authContextValue.setLoggedIn(true);
         authContextValue.setUserID(json.id);
-        console.log(json);
-        // console.log(authContextValue.userID);
+        authContextValue.login(json.email,json.jwtToken,json.id);
+
+        redirect("/dashboard")
+        // console.log(json);
       }
 
       if(json.error){
         authContextValue.setLoggedIn(false);
       }
 
-      authContextValue.login(json.email,json.jwtToken,json.id);
+      
     }
 
     if(response.ok){
@@ -49,9 +51,9 @@ export default function LoginPage() {
     e.preventDefault();
     fetchFunction();
 
-    if(authContextValue.loggedIn){
-      redirect("/dashboard")
-    }
+    // if(authContextValue.loggedIn){
+    //   redirect("/dashboard")
+    // }
   }
 
   return (

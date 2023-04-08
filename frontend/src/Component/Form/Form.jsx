@@ -1,16 +1,20 @@
 import React,{ createContext, useState } from 'react'
-import { AuthContext } from '../Context/Context'
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+// import { AuthContext } from '../Context/Context'
 
 import "./Form.css"
 
 export default function Form() {
     const [eventName,setName]=useState("")
     const [eventDes,setDes]=useState("")
-    const [date,setDate]=useState("")
+    const [date,setDate]=useState(new Date())
     const [poster,setPoster]=useState("")
     const [error,setError]=useState(null)
 
-    const authContextValue=createContext(AuthContext);
+    // const authContextValue=createContext(AuthContext);
     // const id=authContextValue.userID
 
     const sumbitFunction=async(e)=>{
@@ -55,7 +59,8 @@ export default function Form() {
         </div>
         <div className="dateF">
             <label className='inputHeading'>Event Date:</label>
-            <input type="text" placeholder='Event date' onChange={(e)=>setDate(e.target.value)} value={date} />
+            <DatePicker dateFormat="dd-MM-yy" selected={date} onChange={(e) => setDate(e)} />
+            {/* <input type="text" placeholder='Event date' onChange={(e)=>setDate(e.target.value)} value={date} /> */}
         </div>
         <div className="posterF">
             <label className='inputHeading'>Event Poster:</label>

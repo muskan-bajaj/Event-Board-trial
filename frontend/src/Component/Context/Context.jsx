@@ -8,9 +8,8 @@ export const AuthContext=React.createContext({
 });
 
 export const AuthContextProvider=(props)=>{
-    // const [token,setToken]=useState(null);
-    // const [email,setEmail]=useState(null);
     const [loggedIn, setLoggedIn]=useState(false);
+    const [onLogin, setOnLogin]=useState(false);
     const [userID, setUserID]=useState("");
 
     const login=(email,token,userID)=>{
@@ -21,17 +20,15 @@ export const AuthContextProvider=(props)=>{
 
     const contextValue = useMemo(
         () => ({
-        //   token: token,
-        //   setToken:setToken,
           loggedIn: loggedIn,
           setLoggedIn:setLoggedIn,
-        //   email:email,
-        //   setEmail:setEmail,
           login:login,
           userID:userID,
-          setUserID:setUserID
+          setUserID:setUserID,
+          onLogin:onLogin,
+          setOnLogin:setOnLogin
         }),
-        [loggedIn,setLoggedIn,userID]
+        [loggedIn,setLoggedIn,userID,setUserID,onLogin,setOnLogin]
       );    
 
     return(
