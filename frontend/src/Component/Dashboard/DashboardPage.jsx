@@ -1,4 +1,6 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect,createContext } from 'react';
+import { AuthContext } from '../Context/Context'
+
 import './DashboardPage.css'
 
 import Card from '../NoticeCard/Card';
@@ -6,15 +8,26 @@ import Form from '../Form/Form';
 
 export default function DashboardPage() {
   const [notice, setNotice]=useState(null);
+  // const authContextValue=createContext(AuthContext);
+  const id=localStorage.getItem('id');
+  var objectArray=[];
 
   useEffect(()=>{
     const fetchNotice =async()=>{
         const noticeF=await fetch("/api/notices");
         const noticeJson=await noticeF.json();
-
-        if(noticeF.ok){
-          setNotice(noticeJson)
+        for(var i=0;i<noticeJson.length;i++){
+          for(var element in noticeJson[i]){
+            if(element==='id'){
+              if(noticeJson[i][element]===id){
+                if(noticeF.ok){
+                  objectArray.push(noticeJson[i])
+                }
+              }
+            }
+          }
         }
+        setNotice(objectArray)
     }
     fetchNotice();
   },[notice])

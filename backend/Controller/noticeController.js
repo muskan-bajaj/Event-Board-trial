@@ -19,13 +19,14 @@ const getNotice = async (req, res) => {
 };
 
 const postNotice = async (req, res) => {
-  const { eventName, eventDes, date, poster } = req.body;
+  const { eventName, eventDes, date, poster, id } = req.body;
   try {
     const notice = await noticeSchema.create({
       eventName,
       eventDes,
       date,
       poster,
+      id,
     });
     res.status(200).json(notice);
   } catch (error) {

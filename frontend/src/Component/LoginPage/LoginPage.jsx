@@ -7,6 +7,7 @@ import './LoginPage.css'
 export default function LoginPage() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
+  // const [id, setId]=useState('');
   const [error,setError]=useState(null);
 
   const authContextValue=useContext(AuthContext);
@@ -26,13 +27,16 @@ export default function LoginPage() {
       setError(json.error);
       if(!json.error){
         authContextValue.setLoggedIn(true);
+        authContextValue.setUserID(json.id);
+        console.log(json);
+        // console.log(authContextValue.userID);
       }
 
       if(json.error){
         authContextValue.setLoggedIn(false);
       }
 
-      authContextValue.login(json.email,json.jwtToken);
+      authContextValue.login(json.email,json.jwtToken,json.id);
     }
 
     if(response.ok){
@@ -79,10 +83,8 @@ export default function LoginPage() {
               </Link>
             </div>
             <div className="signIn">
-              {/* <Link to='/dashboard'> */}
                 {error && <div className="loginError">{error}</div>}
                 <button className='signInButton' onClick={handleSubmit}>Log In</button>
-              {/* </Link> */}
             </div>
           </div>
         </div>

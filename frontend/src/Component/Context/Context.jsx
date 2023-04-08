@@ -3,17 +3,20 @@ import React,{useState,useMemo} from "react";
 export const AuthContext=React.createContext({
     token:"",
     isLoggedIn:"",
-    email:""
+    email:"",
+    userID:""
 });
 
 export const AuthContextProvider=(props)=>{
     // const [token,setToken]=useState(null);
     // const [email,setEmail]=useState(null);
     const [loggedIn, setLoggedIn]=useState(false);
+    const [userID, setUserID]=useState("");
 
-    const login=(email,token)=>{
+    const login=(email,token,userID)=>{
         localStorage.setItem("token",token);
         localStorage.setItem("email",email);
+        localStorage.setItem("id",userID);
     }    
 
     const contextValue = useMemo(
@@ -24,9 +27,11 @@ export const AuthContextProvider=(props)=>{
           setLoggedIn:setLoggedIn,
         //   email:email,
         //   setEmail:setEmail,
-          login:login
+          login:login,
+          userID:userID,
+          setUserID:setUserID
         }),
-        [loggedIn,setLoggedIn]
+        [loggedIn,setLoggedIn,userID]
       );    
 
     return(

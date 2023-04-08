@@ -6,11 +6,12 @@ const createToken = (_id) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, id } = req.body;
   try {
     const user = await userSchema.loginUser(email, password);
     const jwtToken = createToken(user._id);
-    res.status(400).json({ email, jwtToken });
+    const id = user._id;
+    res.status(400).json({ email, jwtToken, id });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

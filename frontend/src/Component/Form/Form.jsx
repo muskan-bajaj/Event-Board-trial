@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
+import React,{ createContext, useState } from 'react'
+import { AuthContext } from '../Context/Context'
 
 import "./Form.css"
 
@@ -10,9 +10,14 @@ export default function Form() {
     const [poster,setPoster]=useState("")
     const [error,setError]=useState(null)
 
+    const authContextValue=createContext(AuthContext);
+    // const id=authContextValue.userID
+
     const sumbitFunction=async(e)=>{
         // e.preventDefault()
-        const notice={eventName,eventDes,date,poster}
+        const id=localStorage.getItem('id');
+        const notice={eventName,eventDes,date,poster,id}
+        console.log(notice)
         const response=await fetch("/api/notices",{
             method:'POST',
             body:JSON.stringify(notice),
@@ -57,6 +62,8 @@ export default function Form() {
             <input type="url" placeholder='Link of event poster' onChange={(e)=>setPoster(e.target.value)} value={poster} />
         </div>
         <button className='createNotice' onClick={sumbitFunction}>Create Notice</button>
+        {error && <div className="loginError">{error}</div>}
+
     </div>
   )
 }
