@@ -8,21 +8,24 @@ export default function Navbar() {
   const redirect=useNavigate();
 
   const handleLogin=async()=>{
-    authContextValue.setOnLogin(true);
+    // authContextValue.setOnLogin(true);
+    // console.log(authContextValue.onLogin)
+    localStorage.setItem('onLogin',true)
   }
 
   const handleHome=async()=>{
-    authContextValue.setOnLogin(false);
+    // authContextValue.setOnLogin(false);
+    localStorage.removeItem('onLogin')
   }
 
   const handleLogout=async()=>{
     authContextValue.setLoggedIn(false);
-    authContextValue.setOnLogin(false);
+    localStorage.removeItem('onLogin')
+    // authContextValue.setOnLogin(false);
     localStorage.removeItem('id')
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     redirect('/')
-    // console.log("vinit chutiya")
   }
 
   return (
@@ -34,37 +37,23 @@ export default function Navbar() {
             <input type='search' className='searchInput' placeholder='Type to search here!'/>
         </div>
         <div className='login'>
-          {!authContextValue.loggedIn
+          {localStorage.getItem('id')
             ? 
+            <button className='loginB' onClick={handleLogout}>Logout</button>
+            : 
             <>
-              {!authContextValue.onLogin
+              {localStorage.getItem('onLogin')
                 ?
-                <Link to='/login' style={{textDecoration:'none'}}>
-                  <button className='loginB' onClick={handleLogin}>Login</button>
-                </Link>
-                :
                 <Link to='/' style={{textDecoration:'none'}}>
                   <button className='loginB' onClick={handleHome}>Home</button>
                 </Link>
+                :
+                <Link to='/login' style={{textDecoration:'none'}}>
+                  <button className='loginB' onClick={handleLogin}>Login</button>
+                </Link>
               }
             </>
-            : 
-            <button className='loginB' onClick={handleLogout}>Logout</button>
           }
-
-
-
-
-
-
-
-          {/* {!authContextValue.loggedIn ? (
-            <Link to='/login' style={{textDecoration:'none'}} onClick={handleLogin}>
-              <button className='loginB'>Login</button>
-            </Link>
-          ) : (
-              <button className='loginB' onClick={handleLogout}>Logout</button>
-          )} */}
         </div>
     </div>
   )

@@ -29,16 +29,11 @@ export default function LoginPage() {
         authContextValue.setLoggedIn(true);
         authContextValue.setUserID(json.id);
         authContextValue.login(json.email,json.jwtToken,json.id);
-
         redirect("/dashboard")
-        // console.log(json);
       }
-
       if(json.error){
         authContextValue.setLoggedIn(false);
       }
-
-      
     }
 
     if(response.ok){
@@ -50,10 +45,6 @@ export default function LoginPage() {
   const handleSubmit=async (e)=>{
     e.preventDefault();
     fetchFunction();
-
-    // if(authContextValue.loggedIn){
-    //   redirect("/dashboard")
-    // }
   }
 
   return (
