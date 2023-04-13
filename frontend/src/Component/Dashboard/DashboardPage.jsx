@@ -1,10 +1,10 @@
 import React,{ useState, useEffect,createContext } from 'react';
-import { AuthContext } from '../Context/Context'
+import { AuthContext } from '../Context/Context';
 
 import './DashboardPage.css'
 
 import Card from '../NoticeCard/Card';
-import Form from '../Form/Form';
+import Form from '../Form/NoticeForm/NoticeForm';
 
 export default function DashboardPage() {
   const [notice, setNotice]=useState(null);

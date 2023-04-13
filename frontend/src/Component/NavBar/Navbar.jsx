@@ -2,6 +2,8 @@ import React,{useContext} from 'react'
 import './Navbar.css'
 import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from "../Context/Context";
+// import RegistrationForm from '../Form/RegistrationForm/RegistrationForm';
+// import Form from '../../Page/Form';
 
 export default function Navbar() {
   const authContextValue=useContext(AuthContext);
@@ -28,6 +30,12 @@ export default function Navbar() {
     redirect('/')
   }
 
+  // const handleForm=async()=>{
+  //   return(
+  //     <RegistrationForm/>
+  //   )
+  // }
+
   return (
     <div className='navbar'>
         <div className='image'>
@@ -39,8 +47,13 @@ export default function Navbar() {
         <div className='login'>
           {localStorage.getItem('id')
             ? 
-            <button className='loginB' onClick={handleLogout}>Logout</button>
-            : 
+            <>
+              <Link to='/dashboard/form' style={{textDecoration:'none'}}>
+                  <button className='loginB'>Forms</button>
+              </Link>
+              <button className='loginB' onClick={handleLogout}>Logout</button>
+            </>
+            :
             <>
               {localStorage.getItem('onLogin')
                 ?

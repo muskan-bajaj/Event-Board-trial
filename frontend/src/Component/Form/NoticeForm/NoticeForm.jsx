@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // import { AuthContext } from '../Context/Context'
 
-import "./Form.css"
+import "./NoticeForm.css"
 
 export default function Form() {
     const [eventName,setName]=useState("")
