@@ -11,9 +11,6 @@ export const AuthContextProvider=(props)=>{
     const [loggedIn, setLoggedIn]=useState(false);
     const [onLogin, setOnLogin]=useState(false);
     const [userID, setUserID]=useState("");
-    // const [fieldName,setFieldName]=useState('')
-    // const [fieldType,setFieldType]=useState('')
-    // const [mandate,setMandate]=useState('')
     const [fields,setFields]=useState([{}])
 
     const login=(email,token,userID)=>{

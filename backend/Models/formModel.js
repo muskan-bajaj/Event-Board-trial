@@ -15,23 +15,9 @@ const formSchema = new Schema(
       type: String,
       required: true,
     },
-    text: {
-      type: String,
-    },
-    number: {
-      type: Number,
-    },
-    checkbox: {
-      type: Boolean,
-    },
-    // file: {
-    //   type: File,
-    // },
-    radio: {
-      type: Boolean,
-    },
-    date: {
-      type: String,
+    fields: {
+      type: Object,
+      required: true,
     },
   },
   { timestamps: true }

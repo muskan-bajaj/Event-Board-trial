@@ -9,7 +9,7 @@ import { AuthContext } from '../../../Context/Context'
 export default function Form() {
     const [fieldNo,setFieldNo]=useState([[1]]);
 
-    const [formTitle,setFormTitle]=useState('')
+    const [formName,setFormName]=useState('')
     const [formDes,setFormDes]=useState('')
     const [error,setError]=useState(null)
 
@@ -30,30 +30,28 @@ export default function Form() {
     }, [fieldNo]);
 
     const sumbitFunction=async(e)=>{
-        const id=localStorage.getItem('id');
-        const formDetails={formTitle,formDes,fields}
-        // console.log(formDetails)
-        // const formDetails={formTitle,formDes}
+        const userID=localStorage.getItem('id');
+        const formDetails={userID,formName,formDes,fields}
         console.log(formDetails)
-    // console.log(authContextValue.login)
-        // const response=await fetch("/api/notices",{
-        //     method:'POST',
-        //     body:JSON.stringify(formDetails),
-        //     headers:{
-        //         "Content-Type":"application/json"
-        //     }
-        // })
+        // console.log(authContextValue.login)
+        const response=await fetch("/api/form",{
+            method:'POST',
+            body:JSON.stringify(formDetails),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
 
-        // const json=await response.json()
+        const json=await response.json()
 
-        // if(!response.ok){
-        //     setError(json.error)
-        // }
-        // if(response.ok){
-        //     setFormTitle('')
-        //     setFormDes('')
-        //     setError(null)
-        // }
+        if(!response.ok){
+            setError(json.error)
+        }
+        if(response.ok){
+            setFormName('')
+            setFormDes('')
+            setError(null)
+        }
     }
 
     return (
@@ -63,7 +61,7 @@ export default function Form() {
             <div className="FormHeadingFields">
                 <div className="formTitle">
                     <label htmlFor="fTitle" className='headingLabelFT'>Form Title:</label>
-                    <input type="text" id='fTitle' onChange={(e)=>setFormTitle(e.target.value)} value={formTitle}/>
+                    <input type="text" id='fTitle' onChange={(e)=>setFormName(e.target.value)} value={formName}/>
                 </div>
                 <div className="formDescription">
                     <label htmlFor="fDescription" className='headingLabelFD'>Form Description: </label>

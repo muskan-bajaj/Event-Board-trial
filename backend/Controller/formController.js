@@ -1,5 +1,4 @@
 const noticeSchema = require("../Models/formModel");
-const mongoose = require("mongoose");
 
 const getForm = async (req, res) => {
   const form = await noticeSchema.find({}).sort({ createdAt: -1 });
@@ -7,28 +6,13 @@ const getForm = async (req, res) => {
 };
 
 const postForm = async (req, res) => {
-  const {
-    userID,
-    formName,
-    formDes,
-    text,
-    number,
-    checkbox,
-    file,
-    radio,
-    date,
-  } = req.body;
+  const { userID, formName, formDes, fields } = req.body;
   try {
     const form = await noticeSchema.create({
       userID,
       formName,
       formDes,
-      text,
-      number,
-      checkbox,
-      file,
-      radio,
-      date,
+      fields,
     });
     res.status(200).json(form);
   } catch (error) {
