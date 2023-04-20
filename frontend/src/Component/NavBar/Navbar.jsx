@@ -27,6 +27,7 @@ export default function Navbar() {
     localStorage.removeItem('id')
     localStorage.removeItem('token')
     localStorage.removeItem('email')
+    authContextValue.setFields([])
     redirect('/')
   }
 

@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const noticeRoute = require("./Routes/noticeRoutes");
 const userRoute = require("./Routes/userRoutes");
+const formRoute = require("./Routes/formRoutes");
 const mongoose = require("mongoose");
 
 mongoose
@@ -20,3 +21,4 @@ app.use(express.json());
 
 app.use("/api/notices", noticeRoute);
 app.use("/api/user", userRoute);
+app.use("/api/form", formRoute);

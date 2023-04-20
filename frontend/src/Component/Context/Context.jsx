@@ -2,7 +2,7 @@ import React,{useState,useMemo} from "react";
 
 export const AuthContext=React.createContext({
     token:"",
-    isLoggedIn:"",
+    // isLoggedIn:"",
     email:"",
     userID:""
 });
@@ -11,6 +11,10 @@ export const AuthContextProvider=(props)=>{
     const [loggedIn, setLoggedIn]=useState(false);
     const [onLogin, setOnLogin]=useState(false);
     const [userID, setUserID]=useState("");
+    // const [fieldName,setFieldName]=useState('')
+    // const [fieldType,setFieldType]=useState('')
+    // const [mandate,setMandate]=useState('')
+    const [fields,setFields]=useState([{}])
 
     const login=(email,token,userID)=>{
         localStorage.setItem("token",token);
@@ -20,15 +24,23 @@ export const AuthContextProvider=(props)=>{
 
     const contextValue = useMemo(
         () => ({
+          login:login,
           loggedIn: loggedIn,
           setLoggedIn:setLoggedIn,
-          login:login,
           userID:userID,
           setUserID:setUserID,
           onLogin:onLogin,
-          setOnLogin:setOnLogin
+          setOnLogin:setOnLogin,
+          fields:fields,
+          setFields:setFields
+        //   fieldName:fieldName,
+        //   setFieldName:setFieldName,
+        //   fieldType:fieldType,
+        //   setFieldType:setFieldType,
+        //   mandate:mandate,
+        //   setMandate:setMandate
         }),
-        [loggedIn,setLoggedIn,userID,setUserID,onLogin,setOnLogin]
+        [loggedIn,setLoggedIn,userID,setUserID,onLogin,setOnLogin,fields,setFields]
       );    
 
     return(
