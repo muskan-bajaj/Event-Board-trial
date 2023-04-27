@@ -1,5 +1,5 @@
-import React,{ useState, useEffect,createContext } from 'react';
-// import { AuthContext } from '../Context/Context';
+import React,{ useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../Context/Context';
 
 import './DashboardPage.css'
 
@@ -8,7 +8,9 @@ import Form from '../Form/NoticeForm/NoticeForm';
 
 export default function DashboardPage() {
   const [notice, setNotice]=useState(null);
-  // const authContextValue=createContext(AuthContext);
+
+  const authContextValue=useContext(AuthContext);
+
   const id=localStorage.getItem('id');
   var objectArray=[];
 
@@ -27,10 +29,15 @@ export default function DashboardPage() {
             }
           }
         }
+        // console.log(objectArray)
         setNotice(objectArray)
     }
     fetchNotice();
   },[notice])
+
+  authContextValue.setNotices(notice);
+  // console.log(authContextValue.notices)
+  // console.log(notice)
 
   return (
     <div>

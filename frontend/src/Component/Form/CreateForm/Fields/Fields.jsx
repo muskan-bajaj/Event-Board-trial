@@ -3,7 +3,7 @@ import { AuthContext } from '../../../Context/Context'
 
 import './Fields.css'
 
-export default function Fields() {
+export default function Fields(props) {
     const [fieldName,setFieldName]=useState('')
     const [fieldType,setFieldType]=useState('')
     const [mandate,setMandate]=useState('')
@@ -22,14 +22,20 @@ export default function Fields() {
             setValue("EDIT")
             console.log(fields)
             setDisable('disabled')
-
         }
         else{
             console.log("edit clicked!!!!!!!")
             setValue("DONE")
             setDisable("")
         }
-        // authContextValue.setFields([...fields, fieldDetails])
+        // console.log(props.fieldDisable)
+
+        // if(disable==="disabled" && props.createForm==="clicked"){
+        //     setDisable("")
+        //     setFieldName("")
+        //     setFieldType("")
+        //     setMandate("")
+        // }
     }
   return (
     <div className='registrationField'>
