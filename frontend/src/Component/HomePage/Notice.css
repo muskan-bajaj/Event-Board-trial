@@ -72,3 +72,7 @@
 .posterImage{
     height: 40vh;
 }
+
+.date button{
+    cursor: pointer;
+}

@@ -47,6 +47,7 @@ export default function DashboardPage() {
               <h1>Welcome!</h1>
             </div>
             {notice && notice.map((data)=>{
+              // console.log(data._id)
               return(
                 <div className="cardElement">
                   <Card key={data._id} element={data}/>

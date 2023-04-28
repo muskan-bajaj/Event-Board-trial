@@ -1,12 +1,9 @@
 import React, { useEffect, useState,useContext } from 'react'
+import { AuthContext } from '../../../Context/Context'
+import Fields from '../Fields/Fields'
+import ViewForm from '../../../ViewForm/ViewForm'
 
 import './Form.css'
-import Fields from '../Fields/Fields'
-import FetchFields from '../FetchFields/FetchFields'
-
-import { AuthContext } from '../../../Context/Context'
-import PreviewForm from '../FetchFields/FetchFields'
-
 
 export default function Form() {
     const [fieldNo,setFieldNo]=useState([[1]]);
@@ -20,6 +17,9 @@ export default function Form() {
 
     const authContextValue=useContext(AuthContext)
     let fields = authContextValue.fields
+    const noticeArray=authContextValue.notices
+
+    var noticeID
 
     const handleAddField=async()=>{
         setFieldNo(prevState => [...prevState, [1]])
@@ -57,8 +57,21 @@ export default function Form() {
 
     const confirm=async(e)=>{
         const userID=localStorage.getItem('id');
-        const formDetails={userID,formName,formDes,fields}
-        console.log(formDetails)
+        // const formDetails={userID,formName,formDes,fields}
+        // console.log(formDetails)
+        for(var i=0;i<noticeArray.length;i++){
+            for(var element in noticeArray[i]){
+              if(element==='eventName'){
+                if(noticeArray[i][element]===formName){
+                //   if(noticeF.ok){
+                    noticeID=noticeArray[i]['id']
+                //   }
+                }
+              }
+            }
+          }
+        //   console.log(noticeID)
+        const formDetails={userID,noticeID,formName,formDes,fields}
         const response=await fetch("/api/form",{
             method:'POST',
             body:JSON.stringify(formDetails),
@@ -89,8 +102,6 @@ export default function Form() {
         setModal('modalInactive')
     }
 
-    const noticeArray=authContextValue.notices
-
     return (
     <>
     <div className='registrationForm'>
@@ -109,7 +120,6 @@ export default function Form() {
                             </option>
                         ))}
                 </select>  
-                    {/* <input type="text" id='fTitle' onChange={(e)=>setFormName(e.target.value)} value={formName}/> */}
                 </div>
                 <div className="formDescription">
                     <label htmlFor="fDescription" className='headingLabelFD'>Form Description: </label>
@@ -136,24 +146,9 @@ export default function Form() {
     <div className={modal}>
         <div className="overlay"></div>
         <div className="modal">
-            {/* <div>
-                <PreviewForm formName={formName} formDes={formDes} fields={fields}/>
-            </div> */}
-            <div>
-                FORM NAME: {formName}
-            </div>
-            <div>
-                FORM DESCRIPTION: {formDes}
-            </div>
-            <div>
-                FIELDS:{fields.map((e)=>(
-                    <FetchFields event={e}/>
-                ))}
-            </div>
-            <div>
-                <button onClick={cross}>Cancel</button>
-                <button onClick={confirm}>Confirm</button>
-            </div>
+            <ViewForm name={formName} description={formDes} formFields={fields}/>
+            <button onClick={cross}>Cancel</button>
+            <button onClick={confirm}>Confirm</button>
         </div>
     </div>
     </>

@@ -1,6 +1,14 @@
 import React from 'react'
+import {Link, generatePath, useNavigate} from "react-router-dom"
 
 export default function Card(props) {
+    const redirect=useNavigate();
+    const id=props.element._id
+
+    const fetchForm=async()=>{
+        redirect(generatePath("/dashboard/form/:id",{id}))
+    }
+
   return (
     <div>
         <div className='card'>
@@ -20,6 +28,9 @@ export default function Card(props) {
                 </div>
                 <div className="date">
                     {props.element.date}
+                    {/* <Link to="/dashboard/form/"> */}
+                        <button className='fillForm' onClick={fetchForm}>FORM</button>
+                    {/* </Link> */}
                 </div>
             </div>
             <div className='poster'>

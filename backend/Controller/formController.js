@@ -1,15 +1,21 @@
-const noticeSchema = require("../Models/formModel");
+const formSchema = require("../Models/formModel");
 
 const getForm = async (req, res) => {
-  const form = await noticeSchema.find({}).sort({ createdAt: -1 });
+  const form = await formSchema.find({}).sort({ createdAt: -1 });
+  res.status(200).json(form);
+};
+
+const getFormById = async (req, res) => {
+  const form = await formSchema.findById(req.params.id);
   res.status(200).json(form);
 };
 
 const postForm = async (req, res) => {
-  const { userID, formName, formDes, fields } = req.body;
+  const { userID, noticeID, formName, formDes, fields } = req.body;
   try {
-    const form = await noticeSchema.create({
+    const form = await formSchema.create({
       userID,
+      noticeID,
       formName,
       formDes,
       fields,
@@ -22,5 +28,6 @@ const postForm = async (req, res) => {
 
 module.exports = {
   getForm,
+  getFormById,
   postForm,
 };

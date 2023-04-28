@@ -7,10 +7,17 @@ import Number from "../FieldType/Number"
 import Radio from "../FieldType/Radio"
 
 export default function FetchFields(props) {
-
+  // console.log(props.event.mandate)
   return (
     <>
-
+      {props.event.mandate===true?
+      <>
+        {props.event.fieldName}*
+      </>
+      :
+      <>
+        {props.event.fieldName}
+      </>}
       {(props.event.fieldType==="text")?
       <>
         <Text/>
@@ -53,7 +60,6 @@ export default function FetchFields(props) {
       :
       <>
       </>}
-
     </>
     // Name: {props.event.fieldName} Type: {props.event.fieldType} Mandate: {props.event.mandate}
   )

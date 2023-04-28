@@ -7,6 +7,11 @@ const formSchema = new Schema(
       type: String,
       required: true,
     },
+    noticeID: {
+      type: Schema.Types.ObjectId,
+      ref: "notices",
+      required: true,
+    },
     formName: {
       type: String,
       required: true,
