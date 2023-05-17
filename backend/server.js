@@ -5,6 +5,9 @@ const noticeRoute = require("./Routes/noticeRoutes");
 const userRoute = require("./Routes/userRoutes");
 const formRoute = require("./Routes/formRoutes");
 const mongoose = require("mongoose");
+var MongoClient = require("mongodb").MongoClient;
+
+// console.log("sdfghjkkjhgfxfufxcgicghihcvhjkjhb");
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -16,6 +19,29 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+MongoClient.connect(process.env.MONGO_URL)
+  .then((db) => {
+    var dbo = db.db("test");
+    // console.log("qwertyuiolkjhgfx");
+    dbo.createCollection("data", () => {
+      console.log("Collection created!");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// MongoClient.connect(process.env.MONGO_URL, function (err, db) {
+//   console.log("qwertyuiop");
+//   if (err) console.log(err);
+//   var dbo = db.db("test");
+//   dbo.createCollection("userData", function (err, res) {
+//     if (err) console.log(err);
+//     console.log("Collection created!");
+//     db.close();
+//   });
+// });
 
 app.use(express.json());
 

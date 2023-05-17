@@ -4,6 +4,7 @@ import Fields from '../Fields/Fields'
 import ViewForm from '../../../ViewForm/ViewForm'
 
 import './Form.css'
+import PreviousForm from '../../../PreviousForm/PreviousForm'
 
 export default function Form() {
     const [fieldNo,setFieldNo]=useState([[1]]);
@@ -142,6 +143,10 @@ export default function Form() {
             <button onClick={sumbitFunction}>Create Form</button>
         </div>
     </div>
+
+    {/* <div> */}
+        {/* <PreviousForm/> */}
+    {/* </div> */}
 
     <div className={modal}>
         <div className="overlay"></div>

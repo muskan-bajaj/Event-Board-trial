@@ -1,5 +1,5 @@
 import React from 'react'
-import FetchFields from '../ViewForm/ViewForm'
+import FetchFields from '../Form/CreateForm/FetchFields/FetchFields'
 
 export default function ViewForm(props) {
   return (

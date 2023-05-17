@@ -1,5 +1,5 @@
 import React,{ useContext }  from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, generatePath } from "react-router-dom";
 import { AuthContext } from "./Component/Context/Context";
 import Navbar from "./Component/NavBar/Navbar";
 import Form from "./Component/Form/CreateForm/Form/Form";
@@ -22,6 +22,11 @@ function App() {
     localStorage.removeItem('email')
   });
 
+  // const id=localStorage.getItem('id')
+  // const formPath=generatePath("/dashboard/form/:id",{id:id})
+
+  // console.log(formPath)
+
   return (
     <div>
       <BrowserRouter>
@@ -31,7 +36,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/forgetPassword" element={<ForgetPassword/>}/>
             {authContextValue.loggedIn && (<Route path="/dashboard" element={<Dashboard/>}/>)}
-            {/* {authContextValue.loggedIn && (<Route path="/dashboard/form/:id" element={<ViewForm/>}/>)} */}
+            {/* {authContextValue.loggedIn && (<Route path={formPath} element={<ViewForm/>}/>)} */}
             {authContextValue.loggedIn && (<Route path="/dashboard/form" element={<Form/>}/>)}
         </Routes>
       </BrowserRouter>
