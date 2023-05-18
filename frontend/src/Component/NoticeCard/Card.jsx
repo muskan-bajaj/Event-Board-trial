@@ -1,14 +1,15 @@
-import React,{useState} from 'react'
+import React from 'react'
+// import React,{useState} from 'react'
 import {Link, generatePath, useNavigate} from "react-router-dom"
 
 export default function Card(props) {
     const redirect=useNavigate();
-    const [fillFormModal,setFillFormModal]=useState('')
+    // const [fillFormModal,setFillFormModal]=useState('')
     const id=props.element._id
 
     const fetchForm=async()=>{
-        // redirect(generatePath("/dashboard/form/:id",{id}))
-        // localStorage.setItem("noticeid",id)
+        redirect(generatePath("/dashboard/form/:id",{id}))
+        localStorage.setItem("noticeID",id)
         console.log(id)
         
     }

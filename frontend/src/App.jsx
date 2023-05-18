@@ -1,5 +1,5 @@
 import React,{ useContext, useEffect, useState }  from "react";
-import { BrowserRouter, Route, Routes, generatePath } from "react-router-dom";
+import { BrowserRouter, Route, Routes, generatePath, useParams } from "react-router-dom";
 import { AuthContext } from "./Component/Context/Context";
 import Navbar from "./Component/NavBar/Navbar";
 import Form from "./Component/Form/CreateForm/Form/Form";
@@ -8,11 +8,16 @@ import Login from "./Page/Login";
 import ForgetPassword from "./Page/ForgetPassword"
 import Dashboard from "./Page/Dashboard";
 import ViewForm from "./Page/ViewForm";
+import UserView from "./Component/UserView/UserView";
 
 
 function App() {
   const authContextValue=useContext(AuthContext);
   authContextValue.setLoggedIn(localStorage.getItem('id')?true:false)
+
+  // const {id}=useParams();
+  // console.log(id)
+
   // const id=localStorage.getItem("noticeid");
 
   // var form;
@@ -64,6 +69,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/forgetPassword" element={<ForgetPassword/>}/>
             {authContextValue.loggedIn && (<Route path="/dashboard" element={<Dashboard/>}/>)}
+            <Route path="/dashboard/form/:id" element={<UserView/>}/>
             {/* {authContextValue.loggedIn && (<Route path="/dashboard/form/:id" element={<ViewForm/>}/>)} */}
             {authContextValue.loggedIn && (<Route path="/dashboard/form" element={<Form/>}/>)}
         </Routes>
