@@ -24,7 +24,7 @@ MongoClient.connect(process.env.MONGO_URL)
   .then((db) => {
     var dbo = db.db("test");
     // console.log("qwertyuiolkjhgfx");
-    dbo.createCollection("data", () => {
+    dbo.createCollection("userData", () => {
       console.log("Collection created!");
     });
   })

@@ -4,15 +4,13 @@ import Fields from '../Fields/Fields'
 import ViewForm from '../../../ViewForm/ViewForm'
 
 import './Form.css'
-import PreviousForm from '../../../PreviousForm/PreviousForm'
+// import PreviousForm from '../../../PreviousForm/PreviousForm'
 
 export default function Form() {
     const [fieldNo,setFieldNo]=useState([[1]]);
     const [formName,setFormName]=useState('')
     const [formDes,setFormDes]=useState('')
     const [error,setError]=useState(null)
-    // const [fieldDisable,setFieldDisable]=useState("")
-    // const [createForm,setCreateForm]=useState("")
 
     const [modal,setModal]=useState('modalInactive')
 
@@ -32,8 +30,16 @@ export default function Form() {
 
     const sumbitFunction=async(e)=>{
         const userID=localStorage.getItem('id');
-        const formDetails={userID,formName,formDes,fields}
-        console.log(formDetails)
+        for(var i=0;i<noticeArray.length;i++){
+            for(var element in noticeArray[i]){
+              if(element==='eventName'){
+                if(noticeArray[i][element]===formName){
+                    noticeID=noticeArray[i]['_id']
+                }
+              }
+            }
+          }
+        const formDetails={userID,noticeID,formName,formDes,fields}
         const response=await fetch("/api/form",{
             method:'POST',
             body:JSON.stringify(formDetails),
@@ -52,26 +58,20 @@ export default function Form() {
             setFormDes('')
             setError(null)
         }
-        // setFieldDisable("")
-        // setCreateForm("clicked")
+       
     }
 
     const confirm=async(e)=>{
         const userID=localStorage.getItem('id');
-        // const formDetails={userID,formName,formDes,fields}
-        // console.log(formDetails)
         for(var i=0;i<noticeArray.length;i++){
             for(var element in noticeArray[i]){
               if(element==='eventName'){
                 if(noticeArray[i][element]===formName){
-                //   if(noticeF.ok){
-                    noticeID=noticeArray[i]['id']
-                //   }
+                    noticeID=noticeArray[i]['_id']
                 }
               }
             }
           }
-        //   console.log(noticeID)
         const formDetails={userID,noticeID,formName,formDes,fields}
         const response=await fetch("/api/form",{
             method:'POST',

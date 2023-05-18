@@ -8,7 +8,7 @@ const formSchema = new Schema(
       required: true,
     },
     noticeID: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "notices",
       required: true,
     },
