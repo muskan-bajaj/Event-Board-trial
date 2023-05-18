@@ -152,3 +152,8 @@
 .modalInactive{
     display: none;
 }
+
+.formConfirm{
+    margin-left: 85%;
+    margin-top: 85%;
+}

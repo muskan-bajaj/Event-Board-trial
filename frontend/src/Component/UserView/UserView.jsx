@@ -28,7 +28,7 @@ export default function UserView() {
 
   return (
     <div>
-        <ViewForm name={objectArray.formName} description={objectArray.formDes} formFields={objectArray.fields}/>
+        {objectArray.length!==0 && <ViewForm name={objectArray.formName} description={objectArray.formDes} formFields={objectArray.fields}/>}
     </div>
   )
 }

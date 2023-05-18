@@ -1,0 +1,56 @@
+.viewForm{
+    background-color: #32cd32;
+    width: 50%;
+    /* height: 80%; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+
+.viewName{
+    font-size: xx-large;
+    text-align: center;
+    font-weight: bold;
+}
+
+.viewDes{
+    font-size: larger;
+    text-align: center;
+}
+
+.viewField{
+    margin-top: 12px;
+    display: flex;
+}
+
+.viewFieldNameType{
+    width: 100%;
+    display: flex;
+    font-size: large;
+}
+
+.viewFieldName{
+    width: 30%;
+    text-align: center;
+}
+
+.viewFieldType{
+    width: 100%;
+}
+
+.viewFieldType div input{
+    width: 90%;
+}
+
+.viewSubmit{
+    text-align: center;
+    margin-top: 12px;
+}
+
+.viewSubmit button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}

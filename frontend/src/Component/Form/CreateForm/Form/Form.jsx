@@ -152,8 +152,8 @@ export default function Form() {
         <div className="overlay"></div>
         <div className="modal">
             <ViewForm name={formName} description={formDes} formFields={fields}/>
-            <button onClick={cross}>Cancel</button>
-            <button onClick={confirm}>Confirm</button>
+            <button onClick={cross}>X</button>
+            <button onClick={confirm} className='formConfirm'>Confirm</button>
         </div>
     </div>
     </>
