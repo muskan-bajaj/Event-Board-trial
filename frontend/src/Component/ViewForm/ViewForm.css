@@ -22,7 +22,7 @@
 
 .viewField{
     margin-top: 12px;
-    display: flex;
+    /* display: flex; */
 }
 
 .viewFieldNameType{

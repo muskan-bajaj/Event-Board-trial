@@ -10,8 +10,8 @@ export default function Card(props) {
     const fetchForm=async()=>{
         redirect(generatePath("/dashboard/form/:id",{id}))
         localStorage.setItem("noticeID",id)
-        console.log(id)
-        
+        // console.log(id)
+        // console.log(props.)
     }
 
   return (

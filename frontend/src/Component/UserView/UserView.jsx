@@ -24,7 +24,7 @@ export default function UserView() {
         fetchForm();
     },[])
 
-    console.log(objectArray)
+    // console.log(objectArray)
 
   return (
     <div>
