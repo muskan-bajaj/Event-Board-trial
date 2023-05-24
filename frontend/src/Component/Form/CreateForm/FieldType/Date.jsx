@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export default function Date(props) {
-  const [date,setDate]=useState("")
-  const fieldName=props.fieldName;
-  
-  const document={
-    fieldName: fieldName,
-    value: date
-  }
-
-  useEffect(()=>{
-    props.setData(document)
-  },[date])
-
   return (
     <div>
-        <input type='date' onChange={(e)=>setDate(e.target.value)} value={date}/>
+        <input type='date'
+        onChange={(e)=>{
+          props.setUserData({...props.userData, [`${props.fieldName}`]:e.target.value}
+          )}} 
+        value={props.setUserData[props.fieldName]}/>
     </div>
   )
 }

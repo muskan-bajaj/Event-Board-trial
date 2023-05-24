@@ -1,21 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FetchFields from '../Form/CreateForm/FetchFields/FetchFields'
 
 import "./ViewForm.css"
-import { AuthContext } from '../Context/Context'
 
 export default function ViewForm(props) {
-    const authContextValue=useContext(AuthContext)
 
-    const [userData,setUserData]=useState([])
+    const [userData,setUserData]=useState({})
 
-    // useEffect(()=>{
-        // authContextValue.array.push(userData)
-    // },[userData])
+    useEffect(()=>{
+        for(var i=0;i<props.formFields.length;i++){
+            userData[props.formFields[i].fieldName]=''
+        }
+    },[])
+
 
     const submitForm=async()=>{
-        // console.log(userData)
-        console.log(authContextValue.array)
+        console.log(userData)
+        // console.log(props.formFields[0].fieldName)
+        // console.log(authContextValue.array)
             // const fetchForm=await fetch("/api/form");
             // const json=await fetchForm.json();
             // for(var i=0;i<json.length;i++){

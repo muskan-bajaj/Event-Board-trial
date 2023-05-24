@@ -1,28 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../../Context/Context';
+import React from 'react'
 
 export default function Text(props) {
-  const authContextValue=useContext(AuthContext);
-
-  const [text,setText]=useState("")
-  // const fieldName=props.fieldName;
-  
-  // const document={
-  //   fieldName: fieldName,
-  //   value: text
-  // }
-
-  // useEffect(()=>{
-  //   props.setData(document)
-  // },[text])
-
-  useEffect(()=>{
-    props.setData(text)
-  },[text])
 
   return (
     <div>
-        <input type="text" onChange={(e)=>setText(e.target.value)} value={text}/>
+        <input type="text" 
+        onChange={(e)=>{
+          props.setUserData({...props.userData, [`${props.fieldName}`]:e.target.value}
+          )}} 
+        value={props.setUserData[props.fieldName]}/>
     </div>
   )
 }

@@ -7,27 +7,6 @@ import Number from "../FieldType/Number"
 import Radio from "../FieldType/Radio"
 
 export default function FetchFields(props) {
-  const [data,setData]=useState({})
-
-  // useEffect(()=>{
-    // props.setUserData(data)
-  // },[data])
-
-  var document={
-    // fieldName: props.event.fieldName,
-    // value: data
-  }
-
-  useEffect(()=>{
-    document={
-      fieldName: props.event.fieldName,
-      value: data
-    }
-    console.log(document)
-    // props.setUserData(document)
-  },[data])
-
-  console.log(document)
 
   return (
     <div className='viewFieldNameType'>
@@ -42,44 +21,42 @@ export default function FetchFields(props) {
       
       {(props.event.fieldType==="text")?
       <div className='viewFieldType'>
-        {/* <Text onChange={(e)=>props.setUserData(e.target.value)} value={props.userData}/> */}
-        {/* <Text userData={props.userData} setUserData={props.setUserData} fieldName={props.event.fieldName}/> */}
-        <Text data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <Text fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>
       </>}
       {props.event.fieldType==="checkbox"?
       <div className='viewFieldType'>
-        <Checkbox data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <Checkbox fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>
       </>}
       {props.event.fieldType==="date"?
       <div className='viewFieldType'>
-        <Date data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <Date fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>
       </>}
       {props.event.fieldType==="file"?
       <div className='viewFieldType'>
-        <File data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <File fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>
       </>}
       {(props.event.fieldType==="number")?
       <div className='viewFieldType'>
-        <Number data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <Number fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>
       </>}
       {props.event.fieldType==="radio"?
       <div className='viewFieldType'>
-        <Radio data={data} setData={setData} fieldName={props.event.fieldName}/>
+        <Radio fieldName={props.event.fieldName} setUserData={props.setUserData} userData={props.userData}/>
       </div>
       :
       <>

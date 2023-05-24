@@ -14,11 +14,6 @@ export const AuthContextProvider=(props)=>{
     const [fields,setFields]=useState([{}])
     const [notices,setNotices]=useState([])
 
-    var array=[]
-
-    // const [userData,setUserData]=useState([{}])
-    // const [userFieldValues,setUserFieldValues]=useState([])
-
     const login=(email,token,userID)=>{
         localStorage.setItem("token",token);
         localStorage.setItem("email",email);
@@ -38,19 +33,8 @@ export const AuthContextProvider=(props)=>{
           setFields:setFields,
           notices:notices,
           setNotices:setNotices,
-          array:array
-        //   userData:userData,
-        //   setUserData:setUserData,
-        //   userFieldValues:userFieldValues,
-        //   setUserFieldValues:setUserFieldValues
-        //   fieldName:fieldName,
-        //   setFieldName:setFieldName,
-        //   fieldType:fieldType,
-        //   setFieldType:setFieldType,
-        //   mandate:mandate,
-        //   setMandate:setMandate
         }),
-        [loggedIn,setLoggedIn,userID,setUserID,onLogin,setOnLogin,fields,setFields,notices,setNotices,array]
+        [loggedIn,setLoggedIn,userID,setUserID,onLogin,setOnLogin,fields,setFields,notices,setNotices]
       );    
 
     return(
