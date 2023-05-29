@@ -16,21 +16,19 @@ export default function ViewForm(props) {
 
     const submitForm=async()=>{
         console.log(userData)
-        // console.log(props.formFields[0].fieldName)
-        // console.log(authContextValue.array)
-            // const fetchForm=await fetch("/api/form");
-            // const json=await fetchForm.json();
-            // for(var i=0;i<json.length;i++){
-            //     for(var element in json[i]){
-            //         if(element==='noticeID'){
-            //             if(json[i][element]===id){
-            //                 if(fetchForm.ok){
-            //                     setObjectArray(json[i])
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
+        // const fetchForm=await fetch("/api/form");
+        // const json=await fetchForm.json();
+        // for(var i=0;i<json.length;i++){
+        //     for(var element in json[i]){
+        //         if(element==='noticeID'){
+        //            if(json[i][element]===id){
+        //                if(fetchForm.ok){
+        //                    setObjectArray(json[i])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
   return (
     <div className='viewForm'>

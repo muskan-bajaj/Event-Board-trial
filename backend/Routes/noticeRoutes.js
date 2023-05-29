@@ -4,8 +4,8 @@ const {
   getNotices,
   getNotice,
   postNotice,
-  deleteNotice,
-  updateNotice,
+  // deleteNotice,
+  // updateNotice,
 } = require("../Controller/noticeController");
 
 router.get("/", getNotices);
@@ -14,8 +14,8 @@ router.get("/:id", getNotice);
 
 router.post("/", postNotice);
 
-router.delete("/:id", deleteNotice);
+// router.delete("/:id", deleteNotice);
 
-router.patch("/:id", updateNotice);
+// router.patch("/:id", updateNotice);
 
 module.exports = router;

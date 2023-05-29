@@ -14,3 +14,6 @@ router.get("/:id", getFormById);
 router.post("/", postForm);
 
 module.exports = router;
+
+//SEND DATA TO THE COLLECTION
+//COLLECTTION CREATE HHO GYA DATA SEND KARNA HAI USME

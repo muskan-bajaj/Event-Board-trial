@@ -5,7 +5,7 @@ const noticeRoute = require("./Routes/noticeRoutes");
 const userRoute = require("./Routes/userRoutes");
 const formRoute = require("./Routes/formRoutes");
 const mongoose = require("mongoose");
-var MongoClient = require("mongodb").MongoClient;
+// var MongoClient = require("mongodb").MongoClient;
 
 // console.log("sdfghjkkjhgfxfufxcgicghihcvhjkjhb");
 
@@ -20,17 +20,17 @@ mongoose
     console.log(error);
   });
 
-MongoClient.connect(process.env.MONGO_URL)
-  .then((db) => {
-    var dbo = db.db("test");
-    // console.log("qwertyuiolkjhgfx");
-    dbo.createCollection("userData", () => {
-      console.log("Collection created!");
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// MongoClient.connect(process.env.MONGO_URL)
+//   .then((db) => {
+//     var dbo = db.db("test");
+//     // console.log("qwertyuiolkjhgfx");
+//     dbo.createCollection("userData", () => {
+//       console.log("Collection created!");
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 // MongoClient.connect(process.env.MONGO_URL, function (err, db) {
 //   console.log("qwertyuiop");
