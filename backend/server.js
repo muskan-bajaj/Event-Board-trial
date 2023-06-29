@@ -4,7 +4,7 @@ const app = express();
 const noticeRoute = require("./Routes/noticeRoutes");
 const userRoute = require("./Routes/userRoutes");
 const formRoute = require("./Routes/formRoutes");
-// const formDataRoute = require("./Routes/formDataRoutes");
+const formDataRoute = require("./Routes/formDataRoutes");
 const mongoose = require("mongoose");
 // var MongoClient = require("mongodb").MongoClient;
 
@@ -49,4 +49,4 @@ app.use(express.json());
 app.use("/api/notices", noticeRoute);
 app.use("/api/user", userRoute);
 app.use("/api/form", formRoute);
-// app.use("/api/formData", formDataRoute);
+app.use("/api/formData", formDataRoute);

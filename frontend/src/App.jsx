@@ -1,19 +1,24 @@
-import React,{ useContext, useEffect, useState }  from "react";
-import { BrowserRouter, Route, Routes, generatePath, useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  generatePath,
+  useParams,
+} from "react-router-dom";
 import { AuthContext } from "./Component/Context/Context";
 import Navbar from "./Component/NavBar/Navbar";
 import Form from "./Component/Form/CreateForm/Form/Form";
 import Home from "./Page/Home";
 import Login from "./Page/Login";
-import ForgetPassword from "./Page/ForgetPassword"
+import ForgetPassword from "./Page/ForgetPassword";
 import Dashboard from "./Page/Dashboard";
 import ViewForm from "./Page/ViewForm";
 import UserView from "./Component/UserView/UserView";
 
-
 function App() {
-  const authContextValue=useContext(AuthContext);
-  authContextValue.setLoggedIn(localStorage.getItem('id')?true:false)
+  const authContextValue = useContext(AuthContext);
+  authContextValue.setLoggedIn(localStorage.getItem("id") ? true : false);
 
   // const {id}=useParams();
   // console.log(id)
@@ -52,26 +57,31 @@ function App() {
   //   fetchForm();
   // },[form])
 
-  window.addEventListener('beforeunload', function (e) {
+  window.addEventListener("beforeunload", function(e) {
     e.preventDefault();
-    localStorage.removeItem('onLogin')
-    localStorage.removeItem('id')
-    localStorage.removeItem('token')
-    localStorage.removeItem('email')
+    localStorage.removeItem("onLogin");
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
   });
 
   return (
     <div>
       <BrowserRouter>
-        <Navbar/>
+        <Navbar />
         <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/forgetPassword" element={<ForgetPassword/>}/>
-            {authContextValue.loggedIn && (<Route path="/dashboard" element={<Dashboard/>}/>)}
-            <Route path="/dashboard/form/:id" element={<UserView/>}/>
-            {/* {authContextValue.loggedIn && (<Route path="/dashboard/form/:id" element={<ViewForm/>}/>)} */}
-            {authContextValue.loggedIn && (<Route path="/dashboard/form" element={<Form/>}/>)}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
+          {authContextValue.loggedIn && (
+            <Route path="/dashboard" element={<Dashboard />} />
+          )}
+          <Route path="/dashboard/form/:id" element={<ViewForm />} />
+          {/* <Route path="/dashboard/form/:id" element={<UserView/>}/> */}
+          {/* {authContextValue.loggedIn && (<Route path="/dashboard/form/:id" element={<ViewForm/>}/>)} */}
+          {/* {authContextValue.loggedIn && (
+            <Route path="/dashboard/form" element={<Form />} />
+          )} */}
         </Routes>
       </BrowserRouter>
     </div>

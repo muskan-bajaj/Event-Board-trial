@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import FetchFields from "../Form/CreateForm/FetchFields/FetchFields";
 
 import "./ViewForm.css";
+import { useParams } from "react-router-dom";
 
 export default function ViewForm(props) {
   const [userData, setUserData] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
     for (var i = 0; i < props.formFields.length; i++) {
@@ -13,16 +15,19 @@ export default function ViewForm(props) {
   }, []);
 
   const submitForm = async () => {
+    userData["eventName"] = props.name;
+    userData["formID"] = id;
     console.log(userData);
-    // await fetch("/api/formData", {
-    //   method: "POST",
-    //   body: JSON.stringify(userData),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+    const response = await fetch("/api/formData/", {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    // const json = await response.json();
+    const json = await response.json();
+    window.location.reload(true);
 
     // if (!response.ok) {
     //   setError(json.error);
@@ -51,10 +56,6 @@ export default function ViewForm(props) {
       <div className="viewSubmit">
         <button onClick={submitForm}>SUBMIT</button>
       </div>
-      {/* <div>
-            <button onClick={cross}>Cancel</button>
-            <button onClick={confirm}>Confirm</button>
-        </div> */}
     </div>
   );
 }
