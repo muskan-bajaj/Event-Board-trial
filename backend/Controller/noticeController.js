@@ -15,7 +15,7 @@ const getNotice = async (req, res) => {
   }
   const notice = await noticeSchema.findById(id);
   if (!notice) {
-    return res.status(404).json({ error: "no such id" });
+    return res.status(404).json({ error: "no notice with such id" });
   }
   res.status(200).json(notice);
 };

@@ -1,0 +1,19 @@
+.userDataPage{
+    background-color: green;
+    padding: 10px;
+}
+
+.total{
+    font-size: x-large;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+
+.dataDone{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}

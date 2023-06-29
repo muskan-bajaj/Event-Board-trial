@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { postData } = require("../Controller/formDataController");
+const { postData, getData } = require("../Controller/formDataController");
 
-// router.get("/", getForm);
+router.get("/:eventName", getData);
 
 // router.get("/:id", getFormById);
 
