@@ -78,6 +78,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
           )}
           <Route path="/dashboard/form/:id" element={<ViewForm />} />
+          <Route path="/dashboard/form" element={<Form />} />
           {authContextValue.loggedIn && (
             <Route path="/dashboard/data/:id" element={<UserData />} />
           )}
